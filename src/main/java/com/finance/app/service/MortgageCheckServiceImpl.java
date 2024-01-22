@@ -46,7 +46,7 @@ public class MortgageCheckServiceImpl implements MortgageCheckService{
             log.info("Interest rate is "+interestRate);
             double mortgage = emiCalculator(mortgageRequest.getLoanValue(), interestRate, mortgageRequest.getMaturityPeriod());
 
-            mortgageCheckResponse.setMortgagePossibility(true);
+            mortgageCheckResponse.setMortgageFeasibility(true);
             mortgageCheckResponse.setMonthlyCost(mortgage);
             return mortgageCheckResponse;
 

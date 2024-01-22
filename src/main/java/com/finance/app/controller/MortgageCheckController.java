@@ -54,7 +54,7 @@ public class MortgageCheckController {
     @RequestMapping(method = RequestMethod.GET, path = "/interest-rate")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<InterestResponse>> getInterestList() {
-        log.info("Getting the ingredients");
+        log.info("Getting the interest rates");
         return ResponseEntity.status(HttpStatus.OK).body(mortgageCheckService.getInterestList());
     }
 }

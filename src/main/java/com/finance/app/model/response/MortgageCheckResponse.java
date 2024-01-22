@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class MortgageCheckResponse {
     @Schema(description = "The monthly cost of the mortgage", example = "1000.00")
     private Double monthlyCost;
-    @Schema(description = "The mortgage check ", example = "true")
-    private boolean mortgagePossibility;
+    @Schema(description = "The mortgage feasibility check ", example = "true")
+    private boolean mortgageFeasibility;
 }
