@@ -27,7 +27,6 @@ public class MortgageCheckController {
     }
 
     /**
-     *
      * @param mortgageRequest
      * @return
      */
@@ -36,7 +35,7 @@ public class MortgageCheckController {
             @ApiResponse(responseCode = "200", description = "Mortgage can be taken successfully"),
             @ApiResponse(responseCode = "404", description = "Mortgage can not be taken successfully")
     })
-    @RequestMapping(method = RequestMethod.POST,path = "/mortgage-check")
+    @RequestMapping(method = RequestMethod.POST, path = "/mortgage-check")
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<MortgageCheckResponse> checkMortgage(@RequestBody @Valid MortgageRequest mortgageRequest) {
         log.info("checking Mortgage");
@@ -44,7 +43,6 @@ public class MortgageCheckController {
     }
 
     /**
-     *
      * @return
      */
     @Operation(description = "Retrieve current interest rates")

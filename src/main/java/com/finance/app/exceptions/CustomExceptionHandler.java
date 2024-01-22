@@ -57,10 +57,9 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         });
         UUID uuid = UUID.randomUUID();
         log.error(ex.getMessage());
-        final APIRequestErrorModel error = new APIRequestErrorModel(errors, APIErrorCodeConfig.INVALID_INPUT, ErrorSeverityLevelCodeType.ERROR,uuid);
+        final APIRequestErrorModel error = new APIRequestErrorModel(errors, APIErrorCodeConfig.INVALID_INPUT, ErrorSeverityLevelCodeType.ERROR, uuid);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
-
 
 
     @ExceptionHandler(MaturityCheckException.class)
@@ -69,7 +68,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         UUID uuid = UUID.randomUUID();
         log.error(String.valueOf(ex.getMessage()));
         HttpStatus status = ex.getStatus() == null ? HttpStatus.BAD_REQUEST : ex.getStatus();
-        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.INVALID_INPUT, ErrorSeverityLevelCodeType.ERROR,uuid);
+        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.INVALID_INPUT, ErrorSeverityLevelCodeType.ERROR, uuid);
         return new ResponseEntity<>(error, status);
     }
 
@@ -79,7 +78,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleRuntimeException(RuntimeException ex) {
         UUID uuid = UUID.randomUUID();
         log.error(String.valueOf(ex.getMessage()));
-        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.INTERNAL_ERROR, ErrorSeverityLevelCodeType.ERROR,uuid);
+        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.INTERNAL_ERROR, ErrorSeverityLevelCodeType.ERROR, uuid);
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -88,9 +87,10 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<Object> handleArgumentException(Exception ex) {
         UUID uuid = UUID.randomUUID();
         log.error(String.valueOf(ex.getMessage()));
-        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.INVALID_INPUT, ErrorSeverityLevelCodeType.ERROR,uuid);
+        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.INVALID_INPUT, ErrorSeverityLevelCodeType.ERROR, uuid);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(DataIntegrityViolationException.class)
     @ResponseBody
     public ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex) {
@@ -101,7 +101,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
             message = APIValidationConfig.DB_CONSTRAINT_VIOLATED;
         }
 
-        final APIErrorModel error = new APIErrorModel(message, APIErrorCodeConfig.DB_ERROR, ErrorSeverityLevelCodeType.ERROR,uuid);
+        final APIErrorModel error = new APIErrorModel(message, APIErrorCodeConfig.DB_ERROR, ErrorSeverityLevelCodeType.ERROR, uuid);
         return new ResponseEntity<>(error, HttpStatus.FORBIDDEN);
     }
 
@@ -111,7 +111,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
     public final ResponseEntity<Object> handleConstraintViolation(ConstraintViolationException ex) {
         UUID uuid = UUID.randomUUID();
         log.error(String.valueOf(ex.getMessage()));
-        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.DB_ERROR, ErrorSeverityLevelCodeType.ERROR,uuid);
+        final APIErrorModel error = new APIErrorModel(ex.getMessage(), APIErrorCodeConfig.DB_ERROR, ErrorSeverityLevelCodeType.ERROR, uuid);
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 

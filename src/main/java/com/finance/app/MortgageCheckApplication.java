@@ -6,7 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Mortgage check API", version = "2.0", description = "Mortgage check API"))
+@OpenAPIDefinition(info = @Info(title = "Mortgage check API", version = "1.0", description = "Mortgage check API"))
 public class MortgageCheckApplication {
 
 	public static void main(String[] args) {

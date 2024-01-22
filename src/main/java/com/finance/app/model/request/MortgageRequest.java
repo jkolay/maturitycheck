@@ -2,8 +2,6 @@ package com.finance.app.model.request;
 
 import com.finance.app.config.APIValidationConfig;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NegativeOrZero;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import lombok.AllArgsConstructor;
