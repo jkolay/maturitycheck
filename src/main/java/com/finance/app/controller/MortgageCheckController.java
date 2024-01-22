@@ -7,6 +7,7 @@ import com.finance.app.service.MortgageCheckService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,7 +38,7 @@ public class MortgageCheckController {
     })
     @RequestMapping(method = RequestMethod.POST,path = "/mortgage-check")
     @ResponseStatus(HttpStatus.OK)
-    public ResponseEntity<MortgageCheckResponse> checkMortgage(@RequestBody MortgageRequest mortgageRequest) {
+    public ResponseEntity<MortgageCheckResponse> checkMortgage(@RequestBody @Valid MortgageRequest mortgageRequest) {
         log.info("checking Mortgage");
         return ResponseEntity.status(HttpStatus.OK).body(mortgageCheckService.checkMortgage(mortgageRequest));
     }

@@ -2,7 +2,7 @@ package com.finance.app.exceptions;
 
 
 import com.finance.app.config.APIErrorCodeConfig;
-import com.finance.app.config.APPValidationConfig;
+import com.finance.app.config.APIValidationConfig;
 import com.finance.app.model.error.APIErrorModel;
 import com.finance.app.model.error.APIRequestErrorModel;
 import com.finance.app.model.error.ErrorSeverityLevelCodeType;
@@ -98,7 +98,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
         log.error(String.valueOf(ex.getMessage()));
         String message = ex.getMessage();
         if (ex.getCause() instanceof org.hibernate.exception.ConstraintViolationException) {
-            message = APPValidationConfig.DB_CONSTRAINT_VIOLATED;
+            message = APIValidationConfig.DB_CONSTRAINT_VIOLATED;
         }
 
         final APIErrorModel error = new APIErrorModel(message, APIErrorCodeConfig.DB_ERROR, ErrorSeverityLevelCodeType.ERROR,uuid);
