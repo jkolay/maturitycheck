@@ -52,7 +52,7 @@ public class MortgageCheckServiceImpl implements MortgageCheckService{
 
         }
         else{
-            throw new MaturityCheckException("The mortgage cannot be obtained due to unmet conditions.");
+            throw new MaturityCheckException("The mortgage shouldn't exceeded 4 times the loan (and) The mortgage shouldn't exceeded the home value ");
         }
     }
 

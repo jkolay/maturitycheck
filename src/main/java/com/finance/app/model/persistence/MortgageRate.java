@@ -10,6 +10,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Setter;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -33,7 +34,8 @@ public class MortgageRate {
     @Column(nullable = false, name = "maturity_period")
     private int maturityPeriod;
 
-
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false, name="last_update")
     private LocalDateTime lastUpdate;
 }
